@@ -1,0 +1,27 @@
+{
+  "name": "@aurelianoa/array-manager",
+  "version": "1.0.0",
+  "description": "Simple array manager for Solidity",
+  "solidity": {
+    "version": "0.8.28"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Solidity",
+    "Arrays",
+    "Helper"
+  ],
+  "author": "Aureliano Alarcon Smith @aurealarcon @aurelianoa aurelianoa.eth",
+  "license": "MIT",
+  "files": [
+    "/contracts/**/*.sol"
+  ],
+  "private": false,
+  "devDependencies": {},
+  "bugs": {
+    "url": "https://github.com/aurelianoa/iris-channels/issues"
+  },
+  "homepage": "https://github.com/aurelianoa/iris-channels#readme"
+}
