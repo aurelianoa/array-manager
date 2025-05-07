@@ -5,11 +5,6 @@ pragma solidity ^0.8.28;
 /// @notice This contract is used to manage arrays of addresses
 import {IArrayManager} from "./interfaces/IArrayManager.sol";
 abstract contract AddressArrayManager is IArrayManager {
-    uint8 constant private _VERSION = 1_0_0;
-    /// @inheritdoc IArrayManager
-    function VERSION() external pure returns (uint8) {
-        return _VERSION;
-    }
     /// Find in array
     /// @param _array the array
     /// @param lookUp the address to look up
@@ -40,16 +35,27 @@ abstract contract AddressArrayManager is IArrayManager {
     ) internal pure returns (bool) {
         return findInArray(_array, lookUp) < _array.length;
     }
-    /// Remove from array
+    /// Remove from array with a index
     /// @param _array the array
     /// @param index the index of the address to be removed
-    function removeFromArray(
+    function removeFromArrayWithIndex(
         address[] storage _array, 
         uint index
     ) internal {
         if(index > _array.length) return;
         _array[index] = _array[_array.length - 1];
         _array.pop();
+    }
+    /// Remove from array
+    /// @param _array the array
+    /// @param lookUp the address to be removed
+    /// @notice if the address is not in the array, do not remove it
+    function removeFromArray(
+        address[] storage _array, 
+        address lookUp
+    ) internal {
+        uint256 index = findInArray(_array, lookUp);
+        removeFromArrayWithIndex(_array, index);
     }
     /// Add to array
     /// @param _array the array

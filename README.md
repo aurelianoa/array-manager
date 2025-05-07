@@ -43,10 +43,10 @@ function isInArray(
 
 /// Remove from array
 /// @param _array the array
-/// @param index the index of the address to be removed
+/// @param the address to be removed
 function removeFromArray(
     address[] storage _array, 
-    uint index
+    address lookUp
 ) internal;
 
 /// Add to array
@@ -63,6 +63,3 @@ Every function works the same but with their respective data types
 ## License
 
 This code is licensed under the MIT license.
-
-## version
-1.0.0

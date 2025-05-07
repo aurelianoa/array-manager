@@ -5,11 +5,6 @@ pragma solidity ^0.8.28;
 /// @notice This contract is used to manage arrays bytes32
 import {IArrayManager} from "./interfaces/IArrayManager.sol";
 abstract contract Bytes32ArrayManager is IArrayManager {
-    uint8 constant private _VERSION = 1_0_0;
-    /// @inheritdoc IArrayManager
-    function VERSION() external pure returns (uint8) {
-        return _VERSION;
-    }
     /// Find in array
     /// @param _array the array
     /// @param lookUp the bytes32 to look up
@@ -40,17 +35,27 @@ abstract contract Bytes32ArrayManager is IArrayManager {
     ) internal pure returns (bool) {
         return findInArray(_array, lookUp) < _array.length;
     }
-
     /// Remove from array
     /// @param _array the array
     /// @param index the index of the bytes32 to be removed
-    function removeFromArray(
+    function removeFromArrayWithIndex(
         bytes32[] storage _array, 
         uint index
     ) internal {
         if(index > _array.length) return;
         _array[index] = _array[_array.length - 1];
         _array.pop();
+    }
+    /// Remove from array
+    /// @param _array the array
+    /// @param lookUp the bytes32 to be removed
+    /// @notice if the bytes32 is not in the array, do not remove it
+    function removeFromArray(
+        bytes32[] storage _array, 
+        bytes32 lookUp
+    ) internal {
+        uint256 index = findInArray(_array, lookUp);
+        removeFromArrayWithIndex(_array, index);
     }
     /// Add to array
     /// @param _array the array
