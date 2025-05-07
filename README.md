@@ -5,11 +5,11 @@ The `array-manager` is a simple abstract contract to add/remove and find items i
 ## How to install
 
 ```bash
-npm install @aurelianoa/iris-channels
+npm install @aurelianoa/array-manager
 
-yarn add @aurelianoa/iris-channels
+yarn add @aurelianoa/array-manager
 
-pnpm add @aurelianoa/iris-channels
+pnpm add @aurelianoa/array-manager
 ```
 
 ## Usage
