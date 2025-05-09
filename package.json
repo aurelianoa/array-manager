@@ -1,6 +1,6 @@
 {
   "name": "@aurelianoa/array-manager",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Simple array manager for Solidity",
   "solidity": {
     "version": "0.8.28"
