@@ -57,6 +57,14 @@ function addToArray(
     address[] storage _array, 
     address newValue
 ) internal;
+/// Add to array Unckecked
+/// @param _array the array
+/// @param newValue the address to be added
+/// @notice add the value to the array without checking if it is already in the array
+function addToArrayUnchecked(
+    address[] storage _array, 
+    address newValue
+) internal
 ```
 Every function works the same but with their respective data types
 
