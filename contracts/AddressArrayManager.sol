@@ -50,6 +50,7 @@ abstract contract AddressArrayManager is IArrayManager {
     /// @param _array the array
     /// @param lookUp the address to be removed
     /// @notice if the address is not in the array, do not remove it
+    /// @notice if the value is duplicated, remove the first one
     function removeFromArray(
         address[] storage _array, 
         address lookUp
@@ -66,6 +67,16 @@ abstract contract AddressArrayManager is IArrayManager {
         address newValue
     ) internal {
         if(isInArray(_array, newValue)) return;
+        _array.push(newValue);
+    }
+    /// Add to array Unckecked
+    /// @param _array the array
+    /// @param newValue the address to be added
+    /// @notice add the value to the array without checking if it is already in the array
+    function addToArrayUnchecked(
+        address[] storage _array, 
+        address newValue
+    ) internal {
         _array.push(newValue);
     }
 }

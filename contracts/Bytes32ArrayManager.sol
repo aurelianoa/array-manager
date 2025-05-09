@@ -50,6 +50,7 @@ abstract contract Bytes32ArrayManager is IArrayManager {
     /// @param _array the array
     /// @param lookUp the bytes32 to be removed
     /// @notice if the bytes32 is not in the array, do not remove it
+    /// @notice if the value is duplicated, remove the first one
     function removeFromArray(
         bytes32[] storage _array, 
         bytes32 lookUp
@@ -66,6 +67,16 @@ abstract contract Bytes32ArrayManager is IArrayManager {
         bytes32 newValue
     ) internal {
         if(isInArray(_array, newValue)) return;
+        _array.push(newValue);
+    }
+    /// Add to array Unckecked
+    /// @param _array the array
+    /// @param newValue the bytes32 to be added
+    /// @notice add the value to the array without checking if it is already in the array
+    function addToArrayUnchecked(
+        bytes32[] storage _array, 
+        bytes32 newValue
+    ) internal {
         _array.push(newValue);
     }
 }

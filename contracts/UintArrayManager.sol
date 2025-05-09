@@ -61,11 +61,22 @@ abstract contract UintArrayManager is IArrayManager {
     /// @param _array the array
     /// @param newValue the number to be added
     /// @notice if the number is already in the array, do not add it
+    /// @notice if the value is duplicated, remove the first one
     function addToArray(
         uint[] storage _array, 
         uint newValue
     ) internal {
         if(isInArray(_array, newValue)) return;
+        _array.push(newValue);
+    }
+    /// Add to array Unckecked
+    /// @param _array the array
+    /// @param newValue the number to be added
+    /// @notice add the value to the array without checking if it is already in the array
+    function addToArrayUnchecked(
+        uint[] storage _array, 
+        uint newValue
+    ) internal {
         _array.push(newValue);
     }
 }

@@ -50,6 +50,7 @@ abstract contract StringArrayManager is IArrayManager {
     /// @param _array the array
     /// @param lookUp the string to be removed
     /// @notice if the string is not in the array, do not remove it
+    /// @notice if the value is duplicated, remove the first one
     function removeFromArray(
         string[] storage _array, 
         string memory lookUp
@@ -66,6 +67,16 @@ abstract contract StringArrayManager is IArrayManager {
         string memory newValue
     ) internal {
         if(isInArray(_array, newValue)) return;
+        _array.push(newValue);
+    }
+    /// Add to array Unckecked
+    /// @param _array the array
+    /// @param newValue the string to be added
+    /// @notice add the value to the array without checking if it is already in the array
+    function addToArrayUnchecked(
+        string[] storage _array, 
+        string memory newValue
+    ) internal {
         _array.push(newValue);
     }
     /// compare strings
