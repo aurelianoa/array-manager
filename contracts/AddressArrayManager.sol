@@ -55,6 +55,8 @@ abstract contract AddressArrayManager is IArrayManager {
         address[] storage _array, 
         address lookUp
     ) internal {
+        /// @notice avoid out of bounds
+        if(!isInArray(_array, lookUp)) return;
         uint256 index = findInArray(_array, lookUp);
         removeFromArrayWithIndex(_array, index);
     }

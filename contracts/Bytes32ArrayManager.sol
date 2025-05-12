@@ -55,6 +55,8 @@ abstract contract Bytes32ArrayManager is IArrayManager {
         bytes32[] storage _array, 
         bytes32 lookUp
     ) internal {
+        /// @notice avoid out of bounds
+        if(!isInArray(_array, lookUp)) return;
         uint256 index = findInArray(_array, lookUp);
         removeFromArrayWithIndex(_array, index);
     }

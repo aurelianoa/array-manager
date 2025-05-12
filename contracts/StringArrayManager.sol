@@ -55,6 +55,8 @@ abstract contract StringArrayManager is IArrayManager {
         string[] storage _array, 
         string memory lookUp
     ) internal {
+        /// @notice avoid out of bounds
+        if(!isInArray(_array, lookUp)) return;
         uint256 index = findInArray(_array, lookUp);
         removeFromArrayWithIndex(_array, index);
     }
